@@ -13,7 +13,7 @@ interface Props {
 
 let {
 	value = $bindable(""),
-	placeholder = "Search...",
+	placeholder = "Ara...",
 	disabled = false,
 	class: className = "",
 	onchange,

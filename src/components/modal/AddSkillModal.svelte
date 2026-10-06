@@ -188,7 +188,7 @@ async function handleSave() {
           id="add-skill-name"
           inputType="text"
           value={skillName}
-          placeholder="e.g., Code Review, Writing Style"
+          placeholder="örn. Kod İncelemesi, Yazım Tarzı"
           onchange={(val) => (skillName = val)}
         />
       </SettingContainer>

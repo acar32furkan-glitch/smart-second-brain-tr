@@ -200,7 +200,7 @@ function getAgentSkillsSummary(agentId: string): { icons: string[]; overflow: nu
       <FolderSuggest
         app={plugin.app}
         value={pluginData.agentFolder}
-        placeholder="Agents"
+        placeholder="Ajanlar"
         suggestionFn={(query) =>
           suggestFolders().filter((folder) =>
             folder.path.toLowerCase().includes(query.toLowerCase()),
@@ -216,7 +216,7 @@ function getAgentSkillsSummary(agentId: string): { icons: string[]; overflow: nu
       <FolderSuggest
         app={plugin.app}
         value={pluginData.targetFolder}
-        placeholder="Chats"
+        placeholder="Sohbetler"
         suggestionFn={(query) =>
           suggestFolders().filter((folder) =>
             folder.path.toLowerCase().includes(query.toLowerCase()),
@@ -275,7 +275,7 @@ function getAgentSkillsSummary(agentId: string): { icons: string[]; overflow: nu
       <FolderSuggest
         app={plugin.app}
         value={pluginData.widgetsFolder}
-        placeholder="Widgets"
+        placeholder="Araç Bileşenleri"
         suggestionFn={(query) =>
           suggestFolders().filter((folder) =>
             folder.path.toLowerCase().includes(query.toLowerCase()),

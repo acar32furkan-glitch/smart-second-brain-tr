@@ -15,7 +15,7 @@ interface Props {
 
 let {
 	app,
-	placeholder = "Search folders...",
+	placeholder = "Klasör ara...",
 	suggestionLength = 10,
 	onSubmit,
 	suggestionFn,

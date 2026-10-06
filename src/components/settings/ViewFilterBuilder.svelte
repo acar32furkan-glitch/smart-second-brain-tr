@@ -296,7 +296,7 @@ function handlePropertyValuesChange(raw: string) {
                   {:else if comboOpen && comboTarget === "live" && showsEmptyPoolHint(liveType)}
                     <div class="filter-combo-list picker-popover-content">
                       <div class="filter-combo-empty">
-                        No properties found in vault — type a name to use it anyway.
+                        Kasada özellik bulunamadı — yine de kullanmak için bir ad yazın.
                       </div>
                     </div>
                   {/if}
@@ -305,7 +305,7 @@ function handlePropertyValuesChange(raw: string) {
                   <Text
                     inputType="text"
                     value={formatPropertyValues((liveLeaf as ViewFilterLeaf & { values?: string[] }).values)}
-                    placeholder="any value"
+                    placeholder="herhangi bir değer"
                     onchange={(v: string) =>
                       onLiveLeafChange?.(buildPropertyLeaf(liveLeaf!.value as string, v))}
                     class="filter-leaf-value"
@@ -417,7 +417,7 @@ function handlePropertyValuesChange(raw: string) {
           <Text
             inputType="text"
             value={formatPropertyValues((filter as ViewFilterLeaf & { values?: string[] }).values)}
-            placeholder="any value"
+            placeholder="herhangi bir değer"
             onchange={handlePropertyValuesChange}
             class="filter-leaf-value"
           />
