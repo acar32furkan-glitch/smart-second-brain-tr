@@ -1,0 +1,50 @@
+{
+	"$comment": "scripts/l10n-qa.mjs onay listesi. Burada listelenen metinler 'İngilizce görünen' olarak işaretlense de kasıtlı istisnadır; listede olmayan yeni bir İngilizce metin çıkarsa 'bun run l10n:check' hata verir. Yeni bir istisna gerekiyorsa buraya { text, kind, reason } ekleyin. kind: 'not-translatable' (çevrilmemeli) veya 'translation-pending' (henüz çevrilmedi — bileşen işi).",
+	"allow": [
+		{
+			"text": "my-api-key",
+			"kind": "not-translatable",
+			"reason": "API anahtarı için örnek biçim gösteren yer tutucu; çevrilmez."
+		},
+		{
+			"text": "sk-...",
+			"kind": "not-translatable",
+			"reason": "API anahtarı öneki örneği; çevrilmez."
+		},
+		{
+			"text": "https://github.com/owner/repo/blob/main/skills/my-skill/SKILL.md",
+			"kind": "not-translatable",
+			"reason": "Beceri dosyası için örnek URL; çevrilmez."
+		},
+		{
+			"text": "https://mcp.example.com/mcp",
+			"kind": "not-translatable",
+			"reason": "MCP sunucusu için örnek URL; çevrilmez."
+		},
+		{
+			"text": "Neural Networks Deep Dive",
+			"kind": "not-translatable",
+			"reason": "Arama görünümü önizlemesindeki örnek not başlığı; çevrilmez."
+		},
+		{
+			"text": "Research/AI",
+			"kind": "not-translatable",
+			"reason": "Arama görünümü önizlemesindeki örnek yol/etiket; çevrilmez."
+		},
+		{
+			"text": "md",
+			"kind": "not-translatable",
+			"reason": "Dosya uzantısı örneği (markdown); çevrilmez."
+		},
+		{
+			"text": "obsidian-agent",
+			"kind": "not-translatable",
+			"reason": "Varsayılan ajan/klasör adı örneği (tanımlayıcı); çevrilmez."
+		},
+		{
+			"text": "Smart Second Brain",
+			"kind": "not-translatable",
+			"reason": "Ürün/eklenti adı; çevrilmez."
+		}
+	]
+}

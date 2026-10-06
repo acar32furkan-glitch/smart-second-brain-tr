@@ -32,6 +32,12 @@ jobs:
             - name: Install dependencies
               run: bun install --frozen-lockfile
 
+            # Localization gate: en/tr key + placeholder parity, no empty values,
+            # and no un-allowlisted English string in a .svelte aria-label/
+            # placeholder/title/alt. See docs/l10n.md.
+            - name: Localization check
+              run: bun run l10n:check
+
             # Same rules as `bun run format` / `bun run lint`, without writing.
             # (Deliberately not `biome ci`: that also enforces import ordering,
             # which neither local command applies.)

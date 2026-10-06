@@ -53,6 +53,13 @@ bun run lint     # Biome linter, safe fixes (writes)
 bun run test     # Vitest unit tests
 ```
 
+**Yeni arayüz metni eklerken (Türkçe fork).** Arayüz metnini doğrudan Türkçe yazın;
+anahtar tabanlı çeviri için `src/lib/en.json` ile `src/lib/tr.json`'u aynı anda
+güncelleyin. `bun run l10n:check`, iki dosyanın anahtar/yer tutucu paritesini ve
+`.svelte` dosyalarındaki `aria-label`/`placeholder`/`title`/`alt` metinlerinin
+Türkçeleştirilmiş olmasını denetler — çevrilmemiş yeni bir İngilizce metin CI'ı kırar.
+Ayrıntı: [docs/l10n.md](docs/l10n.md).
+
 Integration tests need a live Obsidian instance and are optional for most changes; see
 "Integration tests" in [AGENTS.md](AGENTS.md).
 
