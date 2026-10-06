@@ -20,6 +20,39 @@ with nothing else gets only the lede. Lead each bullet with a bold summary,
 prefixed with the area when it helps (`**Chat: …**`). PR references like
 `(#505)` become links in the plugin.
 
+## 2.3.1 (2026-10-06)
+
+Orijinal 2.3.0 sürümü üzerine Türkçe yerelleştirme altyapısını ve **ölçülebilir** bir yerelleştirme
+kapısını ekler. Ürün davranışı değişmez; arayüz metinleri, testler ve CI sağlamlaştırılır.
+
+### Eklenen
+
+- **`src/lib/tr.json` + dil algılama:** Obsidian arayüz dili (`tr`, `tr-TR`, …) temel alt etikete
+  çözülür; desteklenmeyen diller İngilizceye düşer. Önceden yalnızca İngilizce kayıtlıydı ve Türkçe
+  arayüz kullanan biri eklentinin i18n'e taşınmış metinlerini İngilizce görüyordu.
+- **`bun run l10n:check` yerelleştirme kapısı:** (a) en/tr anahtar paritesi, (b) yer tutucu paritesi,
+  (c) boş değer denetimi ve (d) `.svelte` dosyalarındaki `aria-label/placeholder/title/alt`
+  metinlerinin kapsam ölçümü. Onay listesinde olmayan yeni bir İngilizce metin çıkarsa CI düşer;
+  istisnalar `scripts/l10n-allowlist.json` içinde **gerekçesiyle** tutulur.
+- **CI'da "Localization check" adımı** ve **`docs/l10n.md`** (yeni dil ekleme + upstream güncelleme politikası).
+
+### Düzeltilen
+
+- **Kurulum kırığı:** `bun install --frozen-lockfile` "lockfile had changes, but lockfile is frozen"
+  hatasıyla düşüyordu; `bun.lock` ile `package.json` hizalandı. CI artık ilk adımı geçiyor.
+- **İki test fork gerçeğine göre düzeltildi:** etiketsiz (tek commit'lik içe aktarma) klonda sürüm
+  replay beklentisi ve `core.autocrlf=true` checkout'ta CRLF fixture üretimi. Assertion'lar aynı kaldı.
+- **Projenin kendi biçim kapısını geçmeyen üç dosya** (`PrivacyListModal.svelte`, `ProviderSetup.svelte`,
+  `DeveloperSettings.svelte`) `biome format` ile düzeltildi.
+- **Kalan İngilizce arayüz metinleri** Türkçeleştirildi: arama ve klasör önerisi yer tutucuları,
+  filtre değeri yer tutucusu, ayarlardaki örnek etiketler. Kimlikler ve örnek URL'ler çevrilmedi.
+
+### Ölçüm
+
+- Birim testleri: **1989/1989** geçiyor · svelte-check: 0 hata / 0 uyarı · Biome: temiz.
+- Yerelleştirme kapsamı (`bun run l10n:check`): taranan **90** metnin **77'si Türkçe**, 9'u gerekçeli
+  istisna, 4'ü salt kod yer tutucusu; **onay listesi dışı 0**.
+
 ## 2.3.0 (2026-09-28)
 
 A reworked chat composer, especially on mobile, agents that keep their memory and skills up to date, and release notes inside the plugin.
