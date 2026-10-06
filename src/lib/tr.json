@@ -1,0 +1,14 @@
+{
+	"settings": {
+		"clear": "Eklenti verilerini temizle",
+		"clear_desc": "Eklenti ayarlarını ve oluşturulan indeks verilerini siler. Kasanızdaki gizli anahtarlar, beceri dosyaları ve sohbet dosyaları korunur.",
+		"clear_label": "Temizle",
+		"clear_modal": {
+			"title": "Eklenti verilerini temizle",
+			"description": "Eklenti ayarları ve oluşturulan indeks verileri silinsin mi? Kasanızdaki gizli anahtarlar, beceri dosyaları ve sohbet dosyaları korunur."
+		},
+		"verbose": "Geliştirici Konsolu günlüğü",
+		"verbose_desc": "Geliştirici Konsolu'nda ayrıntılı günlük kaydını etkinleştirir."
+	},
+	"plugin_data_cleared": "Eklenti verileri temizlendi."
+}
