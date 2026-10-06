@@ -52,11 +52,7 @@ function replayOnboardingIntro() {
 function restoreDismissedRecommendations() {
 	const count = pluginData.dismissedRecommendations.length;
 	pluginData.restoreDismissedRecommendations();
-	new Notice(
-		count > 0
-			? `${count} kapatılmış öneri geri getirildi.`
-			: "Geri getirilecek kapatılmış öneri yok.",
-	);
+	new Notice(count > 0 ? `${count} kapatılmış öneri geri getirildi.` : "Geri getirilecek kapatılmış öneri yok.");
 }
 
 function restoreIntegrationPrivacyWarning() {

@@ -416,7 +416,8 @@ const pickerText = $derived.by(() =>
 				searchPlaceholder: "Kasa dosyalarında ara",
 				searchAriaLabel: "Açılacak dosyaları ara",
 				defaultHeading: "Kasa dosyaları",
-				defaultDescription: "Güvenilmeyen sağlayıcıların erişmesine izin verilen bir veya daha fazla kasa dosyası seçin.",
+				defaultDescription:
+					"Güvenilmeyen sağlayıcıların erişmesine izin verilen bir veya daha fazla kasa dosyası seçin.",
 				emptySearchText: "Eşleşen dosya bulunamadı.",
 				confirmVerb: "Aç",
 				alreadySelectedBadgeLabel: "Zaten açık",
@@ -431,7 +432,9 @@ const pickerText = $derived.by(() =>
 				alreadySelectedBadgeLabel: "Zaten gizli",
 			},
 );
-const excludedTitle = $derived.by(() => (privacyMode === "private-by-default" ? "Gizli tutulanlar" : "Açık tutulanlar"));
+const excludedTitle = $derived.by(() =>
+	privacyMode === "private-by-default" ? "Gizli tutulanlar" : "Açık tutulanlar",
+);
 </script>
 
 <div class="privacy-modal-shell">

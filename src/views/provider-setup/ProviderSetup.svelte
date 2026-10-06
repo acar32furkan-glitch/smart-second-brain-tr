@@ -458,7 +458,9 @@ const connectionStatus = $derived.by<ConnectionStatus>(() => {
 	return "idle";
 });
 const connectionError = $derived(
-	query.data && !query.data.success ? (query.data.message ?? "Kimlik doğrulama başarısız") : "Kimlik doğrulama başarısız",
+	query.data && !query.data.success
+		? (query.data.message ?? "Kimlik doğrulama başarısız")
+		: "Kimlik doğrulama başarısız",
 );
 
 // Done must track the *commit*, not just the connection. A valid connection alone isn't
