@@ -121,8 +121,16 @@ describe("SkillsService.bootstrapDefaultSkills", () => {
 
 	it("leaves an up-to-date skill untouched despite CRLF and a trailing newline", async () => {
 		// Vault-adapter and editor round-trips do this without the user editing anything;
-		// rewriting the file here would be harmless, but FLAGGING it would not be.
-		const reformatted = `${SUBJECT.content.replace(/\n/g, "\r\n")}\n`;
+		// rewriting the file here would be harmless, but FLAGGING it would not.
+		//
+		// Build the CRLF body from a normalized LF base rather than by blind replacement:
+		// on a checkout with `core.autocrlf=true` (Windows) the bundled `SUBJECT.content`
+		// is ALREADY CRLF, so `replace(/\n/g, "\r\n")` would turn every `\r\n` into
+		// `\r\r\n` — a stray-CR body that no round-trip produces and that
+		// `normalizeShipped` rightly reads as a customization. Normalizing first makes the
+		// fixture a genuine CRLF variant of the shipped body on any platform.
+		const lf = SUBJECT.content.replace(/\r\n/g, "\n");
+		const reformatted = `${lf.replace(/\n/g, "\r\n")}\n`;
 		const adapter = makeAdapter({ [SUBJECT_PATH]: reformatted });
 		const svc = makeService(adapter);
 
