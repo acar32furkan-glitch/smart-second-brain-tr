@@ -1,0 +1,102 @@
+<script lang="ts">
+import ManagedEntitySection from "../../components/settings/ManagedEntitySection.svelte";
+import { PrivacyListModal } from "../../components/modal/PrivacyListModal";
+import ProviderItem from "../../components/settings/ProviderItem.svelte";
+import SettingGroup from "../../components/settings/SettingGroup.svelte";
+import SettingItem from "../../components/settings/SettingItem.svelte";
+import Button from "../../components/ui/Button.svelte";
+import Toggle from "../../components/ui/Toggle.svelte";
+import DocsLink from "../../components/ui/DocsLink.svelte";
+import { getData } from "../../stores/dataStore.svelte";
+import { getPlugin } from "../../stores/state.svelte";
+import { icon } from "../../utils/utils";
+import { ProviderSetupModal } from "../provider-setup/ProviderSetup";
+
+const pluginData = getData();
+const plugin = getPlugin();
+
+const privacyListModal = new PrivacyListModal(plugin.app);
+
+// Provider management state
+let configuredProviderIds = $derived(pluginData.getConfiguredProviders());
+
+function handleOpenProviderSetup() {
+	new ProviderSetupModal(plugin, {}).open();
+}
+</script>
+
+<!-- Providers -->
+<ManagedEntitySection
+  heading="Sağlayıcılar"
+  description="Sağlayıcılar, Akıllı İkinci Beyin'i sohbet, gömme ve diğer model destekli özellikler için kullanılan yapay zekâ servislerine bağlar."
+  emptyMessage="Henüz yapılandırılmış sağlayıcı örneği yok."
+  hasItems={configuredProviderIds.length > 0}
+>
+  {#snippet actions()}
+    <Button buttonText="Sağlayıcı ekle" cta={true} onClick={handleOpenProviderSetup} />
+  {/snippet}
+
+  {#if configuredProviderIds.length > 0}
+    {#each configuredProviderIds as provider (provider)}
+      <ProviderItem {provider} />
+    {/each}
+  {/if}
+</ManagedEntitySection>
+
+<!-- Privacy -->
+<SettingGroup heading="Gizlilik">
+  <SettingItem
+    name="Not erişim politikası"
+    class="privacy-setting-item"
+    desc="Güvenilmeyen sağlayıcıların varsayılan olarak hiçbir şey mi yoksa her şeyi mi göreceğini seçin, ardından ilgili dosya listesini yönetin."
+  >
+    {#snippet nameSuffix()}
+      <span
+        class="privacy-trust-icon privacy-trust-icon--label"
+        use:icon={"shield-check"}
+        aria-hidden="true"
+      ></span>
+      <!-- Two vault modes crossed with per-provider trust, where the same toggle
+           inverts meaning depending on the mode — more than one description line
+           can carry, so link the page that lays it out. -->
+      <DocsLink doc="privacyModel" subject="Not erişim politikası" />
+    {/snippet}
+
+    <Button onClick={() => privacyListModal.open()} buttonText="Yönet" />
+  </SettingItem>
+
+  <SettingItem
+    name="Güncellemeleri kontrol et"
+    desc="Günde bir kez bu eklentinin sürüm numarasını GitHub'dan alır ve daha yeni bir sürüm mevcut olduğunda bildirim gösterir. Sizinle veya kasanızla ilgili hiçbir veri gönderilmez. Obsidian'ın kendi otomatik eklenti güncelleme kontrolü açıkken atlanır."
+  >
+    <Toggle
+      checked={pluginData.checkForUpdates}
+      onchange={(checked) => (pluginData.checkForUpdates = checked)}
+    />
+  </SettingItem>
+</SettingGroup>
+
+<style>
+  /* --icon-size drives the injected svg too: Obsidian's .svg-icon reads it for
+     both axes, so sizing only the span leaves the glyph at the inherited 18px
+     height and it overflows the box. */
+  .privacy-trust-icon {
+    --icon-size: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--icon-size);
+    height: var(--icon-size);
+    color: var(--text-accent);
+    flex-shrink: 0;
+  }
+
+  .privacy-trust-icon :global(svg.svg-icon) {
+    width: var(--icon-size);
+    height: var(--icon-size);
+  }
+
+  .privacy-trust-icon--label {
+    --icon-size: 14px;
+  }
+</style>

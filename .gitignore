@@ -1,0 +1,57 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+build
+
+# This repo uses bun (bun.lock); an npm lockfile is a local artifact only.
+package-lock.json
+
+workspace.json
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.envrc
+.env
+.direnv/*
+# Codesearch index
+.codesearch
+
+# btca cache
+.btca
+
+.opencode
+# Ignore agent-local state, but share the project's permission allowlist.
+# A negation cannot re-include a file under an excluded directory, so the
+# directory itself must stay unignored and its contents excluded instead.
+.claude/*
+!.claude/settings.json
+!.claude/skills/
+
+# Obsidian data and local state
+/data.json
+/data/
+
+# Auto-generated files
+main.js
+
+# Local research artifacts — internal, not for publication
+/competitor-analysis.html
+/smart-second-brain-features.html"integration/S2B Test Vault"  

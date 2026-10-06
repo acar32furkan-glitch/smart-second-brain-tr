@@ -1,0 +1,44 @@
+name: UI issue
+description: Something looks wrong, is misaligned, or clashes with your theme.
+title: "[UI]: "
+labels: ["styles"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping us polish the UI! 🐙
+  - type: textarea
+    id: what
+    attributes:
+      label: What looks wrong?
+      description: A screenshot is worth more than a paragraph here. Say what you expected it to look like.
+    validations:
+      required: true
+  - type: input
+    id: theme
+    attributes:
+      label: Theme and CSS snippets
+      description: Which Obsidian theme are you using, and do you have CSS snippets enabled? Does it also happen with the default theme?
+      placeholder: "Minimal 7.x; happens with default theme too"
+    validations:
+      required: true
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Platform
+      multiple: true
+      options:
+        - macOS
+        - Windows
+        - Linux
+        - iOS / iPadOS
+        - Android
+    validations:
+      required: true
+  - type: input
+    id: plugin-version
+    attributes:
+      label: Plugin version
+      placeholder: "2.0.2"
+    validations:
+      required: true
